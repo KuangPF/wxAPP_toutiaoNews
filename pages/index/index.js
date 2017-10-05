@@ -67,18 +67,33 @@ Page({
     var _this = this;
     //请求头条数据
     wx.request({
-      url: 'http://v.juhe.cn/toutiao/index?type=' + newsType + '&key=' + appKey,
+      // url: 'http://v.juhe.cn/toutiao/index?type=' + newsType + '&key=' + appKey,
+      url: 'http://192.168.1.3:90/index.json',
       data: {},
       method: 'GET',
       success: res => {
+        console.log(res);
         let resultData = res.data.result.data;
+        let editTimeArray = new Array();
         var editTime;
-        for(let i=0;i<resultData.length;i++) {
-          console.log(resultData[i].date);
-          let editHour = resultData[i].date.split(':')[0];
-          console.log(editHour);
+        for (let i = 0; i < resultData.length; i++) {
           let nowTime = new Date();
+          let editHour = resultData[i].date.split(' ')[1].split(':')[0];
+          let editMinute = resultData[i].date.split(' ')[1].split(':')[1];
+          let nowHour = nowTime.getHours();
+          let nowMinute = nowTime.getMinutes();
+          let hourInterval = nowHour - editHour;
+          let minteinterval = nowMinute - editMinute;
+
+          if (hourInterval > 1) {
+            editTime = hourInterval + '小时前';
+          } else {
+            editTime = minteinterval + '分钟前';
+          }
+          editTimeArray.push(editTime);
         }
+
+        console.log(editTimeArray);
         _this.setData({
           contentNewsList: resultData,
           indexIsHidden: true
