@@ -9,7 +9,15 @@
   </view>
 
   <view class='content'>
-    <view class='content-top-pic'></view>
+    <view class='content-top-pic'>
+      <swiper class="swiper" indicator-dots="true" autoplay="true" interval="50000" duration="1000">
+        <block wx:for="{{topPic}}" wx:key='{{item.ID}}'>
+          <swiper-item>
+            <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
     <view class='content-list'>
       <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}'>
         <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}'>
@@ -27,5 +35,5 @@
       </block>
     </view>
   </view>
-   <loading hidden='{{indexIsHidden}}'>正在加载</loading> 
+  <loading hidden='{{indexIsHidden}}'>正在加载</loading>
 </view>

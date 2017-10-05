@@ -35,11 +35,26 @@
 }
 
 /*content  */
+.content {
+  margin-top: 90rpx;
+}
 .content-top-pic {
   height: 380rpx;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 }
+.swiper {
+  height: 100%;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+
+/*swiper样式覆盖  */
+
+
 .content-list {
   background-color: #fff;
   z-index: 1;
