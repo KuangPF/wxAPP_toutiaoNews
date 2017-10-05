@@ -20,7 +20,7 @@
             <view class='list-item-right'>
               <view class='article-title'>{{item.title}}</view>
               <view class='article-source'>{{item.author_name}}</view>
-              <view class='article-editTime'>{{item.reply_count}}</view>
+              <view class='article-editTime'>{{item.date}}</view>
             </view>
           </view>
         </view>

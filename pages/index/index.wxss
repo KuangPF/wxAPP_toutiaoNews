@@ -92,11 +92,6 @@
   bottom: 0;
   right: 0;
 }
-.article-editTime::before {
-  content: '回复:';
-  font-size: 28rpx;
-  color: #a8a8a8;
-}
 .article-editTime {
   font-size: 24rpx;
   color: #a8a8a8;

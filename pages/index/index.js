@@ -72,7 +72,6 @@ Page({
       data: {},
       method: 'GET',
       success: res => {
-        console.log(res);
         let resultData = res.data.result.data;
         let editTimeArray = new Array();
         var editTime;
@@ -91,9 +90,10 @@ Page({
             editTime = minteinterval + '分钟前';
           }
           editTimeArray.push(editTime);
+          resultData[i].date = editTime;
         }
 
-        console.log(editTimeArray);
+        console.log(resultData);
         _this.setData({
           contentNewsList: resultData,
           indexIsHidden: true
