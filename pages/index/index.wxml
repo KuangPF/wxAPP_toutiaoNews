@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class='index'>
+  <view class='header'>
+    <view class='headerPanel'>
+      <block wx:for='{{headerTitleName}}' wx:key='{{item.nameID}}'>
+        <view data-id='{{item.nameID}}' data-url='{{item.nameUrl}}' data-newstype='{{item.newsType}}' class="headerTitle {{item.nameID == tapID? 'headerTitleActive':''}}" bindtap='headerTitleClick'>{{item.name}}</view>
+      </block>
+    </view>
+  </view>
+
+  <view class='content'>
+    <view class='content-top-pic'></view>
+    <view class='content-list'>
+      <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}'>
+        <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}'>
+          <view class='list-item-content'>
+            <view class='list-item-left'>
+              <image src='{{item.thumbnail_pic_s}}'></image>
+            </view>
+            <view class='list-item-right'>
+              <view class='article-title'>{{item.title}}</view>
+              <view class='article-source'>{{item.author_name}}</view>
+              <view class='article-replay'>{{item.reply_count}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+   <loading hidden='{{indexIsHidden}}'>正在加载</loading> 
+</view>

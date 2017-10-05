@@ -1,0 +1,105 @@
+/**index.wxss**/
+::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+.headerPanel {
+  height: 90rpx;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #f6f6f6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  /* box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.2); */
+}
+.headerTitle {
+  width: 120rpx;
+  height: 90rpx;
+  /* float: left; */
+  display: inline-block;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: #6a727b;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.headerTitleActive {
+  border-bottom: 4rpx solid #f33;
+  color: #f33;
+}
+
+/*content  */
+.content-top-pic {
+  height: 380rpx;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.content-list {
+  background-color: #fff;
+  z-index: 1;
+  position: relative;
+}
+.list-item {
+  height: 180rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.list-item-content {
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.list-item-left {
+  height: 140rpx;
+  width: 186rpx;
+  margin-right: 20rpx;
+  float: left;
+}
+.list-item-left image {
+  width: 100%;
+  height: 100%;
+}
+.list-item-right {  
+  float: left;
+  width: 484rpx;
+  height: 140rpx;
+  position: relative;
+}
+.article-title {
+  font-size: 34rpx;
+  color: #404040;
+  text-align: justify;
+  height: 86rpx;
+  overflow-y: hidden;
+}
+.article-source::before {
+  content: '作者:';
+  font-size: 24rpx;
+  color: #888;
+  margin-right: 10rpx;
+}
+.article-source {
+  font-size: 24rpx;
+  color: #888;
+  position: absolute;
+  bottom: 0;
+}
+.article-replay::before {
+  content: '回复:';
+  font-size: 28rpx;
+  color: #a8a8a8;
+}
+.article-replay {
+  font-size: 24rpx;
+  color: #a8a8a8;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
