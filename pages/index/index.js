@@ -13,6 +13,10 @@ let topPic = [
   { url: '', ID: '4' }
 ];
 
+let newsUrl;
+let newsTitle;
+let newsAuthor;
+
 Page({
   data: {
     headerTitleName: [
@@ -44,6 +48,7 @@ Page({
     let _this = this;
     newsType = e.currentTarget.dataset.newstype;
     _this.setData({
+      tapID: e.target.dataset.id,
       indexIsHidden: false
     })
     //获取新闻
@@ -115,6 +120,19 @@ Page({
       complete: () => {
 
       }
+    })
+  },
+
+  //跳转到新闻详情页
+
+  viewDetail: function(e) {
+    newsUrl = e.currentTarget.dataset.newsurl;
+    newsTitle = e.currentTarget.dataset.newstitle;
+    newsAuthor = e.currentTarget.dataset.newsauthor;
+    console.log(newsUrl, newsTitle);
+
+    wx.navigateTo({
+      url: '../detail/detail?newsUrl=' + newsUrl + '&newsTitle=' + newsTitle + '&newsAuthor=' + newsAuthor,
     })
   },
 

@@ -1,0 +1,48 @@
+/* pages/detail/detail.wxss */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+
+}
+.header {
+  margin: 40rpx 30rpx 0rpx 30rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.article-title {
+  font-size: 44rpx;
+}
+
+.news-source::before {
+  content: '新闻来源: ';
+  color: #909090;
+  font-size: 26rpx;
+}
+
+.news-source {
+  color: #909090;
+  font-size: 26rpx;
+  margin-top: 28rpx;
+  margin-bottom: 20rpx;
+}
+.content {
+  margin:30rpx 30rpx 30rpx 30rpx;
+  /* overflow: hidden; */
+  line-height: 1.5;
+  box-sizing: border-box;
+  word-break:break-word;
+  display:block;
+}
+.contentTip {
+  font-size: 40rpx;
+  font-family: Microsoft YaHei;
+  text-align: justify;
+  margin-bottom: 40rpx;
+  color: #4B7BB7;
+}
+.article-content {
+  color: #000;
+  font-size: 36rpx;
+  font-family: Microsoft YaHei;
+  text-align: justify;
+}

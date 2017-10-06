@@ -20,7 +20,7 @@
     </view>
     <view class='content-list'>
       <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}'>
-        <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}'>
+        <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}'>
           <view class='list-item-content'>
             <view class='list-item-left'>
               <image src='{{item.thumbnail_pic_s}}'></image>

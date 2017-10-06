@@ -1,0 +1,12 @@
+<!--pages/detail/detail.wxml-->
+<view class='detail'>
+  <view class='header'>
+    <view class='article-title'>{{newsTitle}}</view>
+    <view class='news-source'>{{newsAuthor}}</view>
+  </view>
+  <view class='content'>
+    <view class='contentTip'>{{contentTip}}</view>
+    <view class='article-content'>{{newsUrl}}</view>
+  </view>
+  <loading hidden='{{indexIsHidden}}'>正在加载</loading>
+</view>
