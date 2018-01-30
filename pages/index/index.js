@@ -53,7 +53,7 @@ Page({
     })
     //获取新闻
     wx.request({
-      url: 'http://v.juhe.cn/toutiao/index?type=' + newsType + '&key=' + appKey,
+      url: 'https://v.juhe.cn/toutiao/index?type=' + newsType + '&key=' + appKey,
       data: {},
       method: 'GET',
       success: res => {
@@ -71,8 +71,6 @@ Page({
           let nowMinute = nowTime.getMinutes();
           let hourInterval = nowHour - editHour;
           let minteinterval = nowMinute - editMinute;
-
-          console.log('现在时间=' + nowHour, '编辑时间=' + editHour, hourInterval, nowDay);
 
           if (editDay == nowDay) {
             if (hourInterval > 1) {
@@ -106,7 +104,6 @@ Page({
           }
         }
 
-        //console.log(topPic);
         _this.setData({
           contentNewsList: resultData,
           indexIsHidden: true,
@@ -129,8 +126,6 @@ Page({
     newsUrl = e.currentTarget.dataset.newsurl;
     newsTitle = e.currentTarget.dataset.newstitle;
     newsAuthor = e.currentTarget.dataset.newsauthor;
-    console.log(newsUrl, newsTitle);
-
     wx.navigateTo({
       url: '../detail/detail?newsUrl=' + newsUrl + '&newsTitle=' + newsTitle + '&newsAuthor=' + newsAuthor,
     })
@@ -140,7 +135,7 @@ Page({
     var _this = this;
     //请求头条数据
     wx.request({
-      url: 'http://v.juhe.cn/toutiao/index?type=' + newsType + '&key=' + appKey,
+      url: 'https://v.juhe.cn/toutiao/index?type=' + newsType + '&key=' + appKey,
       // url: 'http://192.168.1.3:90/index.json',
       data: {},
       method: 'GET',
@@ -159,9 +154,6 @@ Page({
           let nowMinute = nowTime.getMinutes();
           let hourInterval = nowHour - editHour;
           let minteinterval = nowMinute - editMinute;
-
-          console.log('现在时间=' + nowHour, '编辑时间=' + editHour, hourInterval, nowDay);
-
           if (editDay == nowDay) {
             if (hourInterval > 1) {
               editTime = hourInterval + '小时前';
@@ -193,8 +185,6 @@ Page({
             topPic[n].url = resultData[ranNum].thumbnail_pic_s03
           }
         }
-
-        //console.log(topPic);
         _this.setData({
           contentNewsList: resultData,
           indexIsHidden: true,
