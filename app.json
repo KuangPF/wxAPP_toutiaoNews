@@ -9,5 +9,6 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "头条新闻",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
