@@ -11,10 +11,10 @@
   </view>
   <view class='content'>
     <view class='content-top-pic'>
-      <swiper class="swiper" indicator-dots="true" autoplay="true" interval="50000" duration="1000">
+      <swiper class="swiper" indicator-dots="true" autoplay="true" interval="30000" duration="300">
         <block wx:for="{{topPic}}" wx:key='{{item.ID}}' wx:if="{{topPic && topPic.length > 0}}">
-          <swiper-item>
-            <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+          <swiper-item bindtap='viewDetail' data-newsurl='{{item.url}}'>
+            <image src="{{item.thumbnail_pic_s}}" class="slide-image" mode="aspectFill" />
           </swiper-item>
         </block>
       </swiper>

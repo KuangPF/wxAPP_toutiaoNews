@@ -36,13 +36,14 @@ const extractArticleInfo = articleList => {
   const topPic = []
   for (let n = 0; n < 4; ++n) {
     let ranNum = Math.floor(Math.random() * 30)
-    let url
+    let thumbnail_pic_s, url
     if (!articleList[ranNum].thumbnail_pic_s03) {
-      url = articleList[ranNum].thumbnail_pic_s
+      thumbnail_pic_s = articleList[ranNum].thumbnail_pic_s
     } else {
-      url = articleList[ranNum].thumbnail_pic_s03
+      thumbnail_pic_s = articleList[ranNum].thumbnail_pic_s03
     }
-    topPic.push({ url, ID: new Date().getTime() })
+    url = articleList[ranNum].url
+    topPic.push({ thumbnail_pic_s, url, ID: new Date().getTime() })
   }
   return { articleList, topPic }
 }

@@ -41,9 +41,9 @@ Page({
   //跳转到新闻详情页
 
   viewDetail: function(e) {
-    let newsUrl = e.currentTarget.dataset.newsurl
-    let newsTitle = e.currentTarget.dataset.newstitle
-    let newsAuthor = e.currentTarget.dataset.newsauthor
+    let newsUrl = e.currentTarget.dataset.newsurl || ''
+    let newsTitle = e.currentTarget.dataset.newstitle || ''
+    let newsAuthor = e.currentTarget.dataset.newsauthor || ''
     wx.navigateTo({
       url: '../webview/webview?newsUrl=' + newsUrl + '&newsTitle=' + newsTitle + '&newsAuthor=' + newsAuthor
     })
