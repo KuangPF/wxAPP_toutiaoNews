@@ -31,9 +31,8 @@ Page({
 
   // headerBar 点击
   headerTitleClick: function(e) {
-    this.renderPage(e.currentTarget.dataset.newstype, () => {
-      this.setData({ tapID: e.target.dataset.id })
-    })
+    this.setData({ tapID: e.target.dataset.id })
+    this.renderPage(e.currentTarget.dataset.newstype)
   },
 
   //跳转到新闻详情页

@@ -3,7 +3,7 @@
   <view class='header'>
     <view class='header-panel one-px-border'>
       <block wx:for='{{headerTitleName}}' wx:key='{{item.nameID}}'>
-        <view data-id='{{item.nameID}}' data-url='{{item.nameUrl}}' data-newstype='{{item.newsType}}' class="header-title {{item.nameID == tapID? 'headerTitle-active':''}}" bindtap='headerTitleClick'>
+        <view data-id='{{item.nameID}}' data-url='{{item.nameUrl}}' data-newstype='{{item.newsType}}' class="header-title {{item.nameID == tapID? 'header-title-active':''}}" bindtap='headerTitleClick'>
           {{item.name}}
         </view>
       </block>

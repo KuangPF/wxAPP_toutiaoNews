@@ -4,7 +4,7 @@
   width: 0;
 }
 .header-panel {
-  height: 90rpx;
+  height: 80rpx;
   width: 100%;
   white-space: nowrap;
   overflow-x: auto;
@@ -19,25 +19,26 @@
 .header-title {
   position: relative;
   width: 120rpx;
-  height: 90rpx;
+  height: 80rpx;
   display: inline-block;
-  line-height: 90rpx;
+  line-height: 80rpx;
   font-size: 32rpx;
   cursor: pointer;
   box-sizing: border-box;
   color: #232323;
-  border-bottom: 2rpx solid rgba(0, 0, 0, 0.2);
+  /* border-bottom: 2rpx solid rgba(0, 0, 0, 0.2); */
   text-align: center;
 }
-.headerTitle-active {
-  border-bottom: 4rpx solid #c34943;
-  color: #c34943;
+.header-title-active {
+  /* border-bottom: 4rpx solid #C34943; */
+  color: #C34943;
   z-index: 99;
+  font-size: 34rpx;
 }
 
 /*content  */
 .content {
-  margin-top: 91rpx;
+  margin-top: 81rpx;
 }
 .content-top-pic {
   position: relative;
