@@ -45,7 +45,7 @@ Page({
     let newsTitle = e.currentTarget.dataset.newstitle
     let newsAuthor = e.currentTarget.dataset.newsauthor
     wx.navigateTo({
-      url: '../detail/detail?newsUrl=' + newsUrl + '&newsTitle=' + newsTitle + '&newsAuthor=' + newsAuthor
+      url: '../webview/webview?newsUrl=' + newsUrl + '&newsTitle=' + newsTitle + '&newsAuthor=' + newsAuthor
     })
   },
 
