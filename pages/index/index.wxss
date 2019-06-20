@@ -40,9 +40,23 @@
   margin-top: 90rpx;
 }
 .content-top-pic {
+  position: relative;
   height: 300rpx;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+}
+.swiper-index {
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 40rpx;
+  width: 65rpx;
+  border-radius: 20rpx;
+  color: #fefefe;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
 }
 .swiper {
   height: 100%;
@@ -54,7 +68,6 @@
 }
 
 /*swiper样式覆盖  */
-
 .content-list {
   background-color: #fff;
   z-index: 1;

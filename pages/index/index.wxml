@@ -11,13 +11,14 @@
   </view>
   <view class='content'>
     <view class='content-top-pic'>
-      <swiper class="swiper" indicator-dots="true" autoplay="true" interval="30000" duration="300">
+      <swiper class="swiper" bindchange='handleSwiperChange' autoplay="true" interval="30000" duration="300">
         <block wx:for="{{topPic}}" wx:key='{{item.ID}}' wx:if="{{topPic && topPic.length > 0}}">
           <swiper-item bindtap='viewDetail' data-newsurl='{{item.url}}'>
             <image src="{{item.thumbnail_pic_s}}" class="slide-image" mode="aspectFill" />
           </swiper-item>
         </block>
       </swiper>
+      <view class="swiper-index">{{swiperIndex}}</view>
     </view>
     <view class='content-list'>
       <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}' wx:if="{{contentNewsList && contentNewsList.length > 0}}">

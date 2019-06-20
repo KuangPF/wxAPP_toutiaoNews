@@ -19,10 +19,21 @@ Page({
       { name: '国内', nameID: '201709', newsType: 'guonei' },
       { name: '国际', nameID: '2017010', newsType: 'guoji' }
     ],
+    swiperIndex: '1/4',
     topPic: [],
     tapID: 201701, // 判断是否选中
     contentNewsList: [],
     newsType: 'top' // 默认请求的是头条数据
+  },
+
+  onLoad: function() {
+    request({ url: `https://v.juhe.cn/toutiao/index?type=${this.data.newsType}&key=${appKey}`, newstype: this.data.newsType }).then(res => {
+      let { articleList, topPic } = extractArticleInfo(res.result.data)
+      this.setData({
+        contentNewsList: articleList,
+        topPic
+      })
+    })
   },
 
   // headerBar 点击
@@ -39,7 +50,6 @@ Page({
   },
 
   //跳转到新闻详情页
-
   viewDetail: function(e) {
     let newsUrl = e.currentTarget.dataset.newsurl || ''
     let newsTitle = e.currentTarget.dataset.newstitle || ''
@@ -49,13 +59,9 @@ Page({
     })
   },
 
-  onLoad: function() {
-    request({ url: `https://v.juhe.cn/toutiao/index?type=${this.data.newsType}&key=${appKey}`, newstype: this.data.newsType }).then(res => {
-      let { articleList, topPic } = extractArticleInfo(res.result.data)
-      this.setData({
-        contentNewsList: articleList,
-        topPic
-      })
+  handleSwiperChange: function(e) {
+    this.setData({
+      swiperIndex: `${e.detail.current + 1}/4`
     })
   }
 })
