@@ -1,2 +1,2 @@
 <!--components/footer/footer.wxml-->
-<text>components/footer/footer.wxml</text>
+<view class="copyright">Copyright © KuanPF</view>

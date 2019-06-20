@@ -37,4 +37,7 @@
       </block>
     </view>
   </view>
+  <view class="footer" wx:if="{{showCopyright}}">
+    <component-footer></component-footer>
+  </view>
 </view>

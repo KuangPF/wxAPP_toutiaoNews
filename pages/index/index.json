@@ -1,5 +1,7 @@
 {
   "navigationBarBackgroundColor": "#C34943",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "component-footer": "/components/footer/footer"
+  }
 }

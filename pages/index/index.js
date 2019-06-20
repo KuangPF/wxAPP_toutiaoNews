@@ -22,11 +22,16 @@ Page({
     swiperIndex: '1/4',
     topPic: [],
     tapID: 201701, // 判断是否选中
-    contentNewsList: []
+    contentNewsList: [],
+    showCopyright: false
   },
 
   onLoad: function() {
-    this.renderPage('top')
+    this.renderPage('top', () => {
+      this.setData({
+        showCopyright: true
+      })
+    })
   },
 
   // headerBar 点击
