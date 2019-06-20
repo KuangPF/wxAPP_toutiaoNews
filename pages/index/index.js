@@ -22,30 +22,17 @@ Page({
     swiperIndex: '1/4',
     topPic: [],
     tapID: 201701, // 判断是否选中
-    contentNewsList: [],
-    newsType: 'top' // 默认请求的是头条数据
+    contentNewsList: []
   },
 
   onLoad: function() {
-    request({ url: `https://v.juhe.cn/toutiao/index?type=${this.data.newsType}&key=${appKey}`, newstype: this.data.newsType }).then(res => {
-      let { articleList, topPic } = extractArticleInfo(res.result.data)
-      this.setData({
-        contentNewsList: articleList,
-        topPic
-      })
-    })
+    this.renderPage('top')
   },
 
   // headerBar 点击
   headerTitleClick: function(e) {
-    // 获取新闻
-    request({ url: `https://v.juhe.cn/toutiao/index?type=${e.currentTarget.dataset.newstype}&key=${appKey}`, newstype: e.currentTarget.dataset.newstype }).then(res => {
-      let { articleList, topPic } = extractArticleInfo(res.result.data)
-      this.setData({
-        contentNewsList: articleList,
-        topPic,
-        tapID: e.target.dataset.id
-      })
+    this.renderPage(e.currentTarget.dataset.newstype, () => {
+      this.setData({ tapID: e.target.dataset.id })
     })
   },
 
@@ -63,5 +50,26 @@ Page({
     this.setData({
       swiperIndex: `${e.detail.current + 1}/4`
     })
+  },
+
+  renderPage: function(newsType, calllBack) {
+    wx.showLoading({
+      title: '加载中'
+    })
+    request({ url: `https://v.juhe.cn/toutiao/index?type=${newsType}&key=${appKey}`, newstype: newsType })
+      .then(res => {
+        wx.hideLoading()
+        let { articleList, topPic } = extractArticleInfo(res.result.data)
+        this.setData({
+          contentNewsList: articleList,
+          topPic
+        })
+        if (calllBack) {
+          calllBack()
+        }
+      })
+      .catch(error => {
+        wx.hideLoading()
+      })
   }
 })
