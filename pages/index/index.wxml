@@ -1,17 +1,18 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class='index'>
   <view class='header'>
-    <view class='headerPanel'>
+    <view class='header-panel one-px-border'>
       <block wx:for='{{headerTitleName}}' wx:key='{{item.nameID}}'>
-        <view data-id='{{item.nameID}}' data-url='{{item.nameUrl}}' data-newstype='{{item.newsType}}' class="headerTitle {{item.nameID == tapID? 'headerTitleActive':''}}" bindtap='headerTitleClick'>{{item.name}}</view>
+        <view data-id='{{item.nameID}}' data-url='{{item.nameUrl}}' data-newstype='{{item.newsType}}' class="header-title {{item.nameID == tapID? 'headerTitle-active':''}}" bindtap='headerTitleClick'>
+          {{item.name}}
+        </view>
       </block>
     </view>
   </view>
-
   <view class='content'>
     <view class='content-top-pic'>
       <swiper class="swiper" indicator-dots="true" autoplay="true" interval="50000" duration="1000">
-        <block wx:for="{{topPic}}" wx:key='{{item.ID}}'>
+        <block wx:for="{{topPic}}" wx:key='{{item.ID}}' wx:if="{{topPic && topPic.length > 0}}">
           <swiper-item>
             <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
           </swiper-item>
@@ -19,9 +20,9 @@
       </swiper>
     </view>
     <view class='content-list'>
-      <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}'>
+      <block wx:for='{{contentNewsList}}' wx:key='{{item.newsID}}' wx:if="{{contentNewsList && contentNewsList.length > 0}}">
         <view class='list-item' bindtap='viewDetail' data-newsurl='{{item.url}}' data-newstitle='{{item.title}}' data-newsauthor='{{item.author_name}}'>
-          <view class='list-item-content'>
+          <view class='list-item-content one-px-border'>
             <view class='list-item-left'>
               <image src='{{item.thumbnail_pic_s}}'></image>
             </view>
@@ -35,5 +36,4 @@
       </block>
     </view>
   </view>
-  <loading hidden='{{indexIsHidden}}'>正在加载</loading>
 </view>

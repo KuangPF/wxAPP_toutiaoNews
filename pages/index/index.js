@@ -1,21 +1,9 @@
 //index.js
 //获取应用实例
-const app = getApp();
-const appKey = 'fc35d7872c25744ab4669c7d9dbcf15e'; //用于访问新闻接口的appKey
-
-let contentNewsList;
-let newsType;
-let indexIsHidden;
-let topPic = [
-  { url: '', ID: '1' },
-  { url: '', ID: '2' },
-  { url: '', ID: '3' },
-  { url: '', ID: '4' }
-];
-
-let newsUrl;
-let newsTitle;
-let newsAuthor;
+const app = getApp()
+const appKey = 'fc35d7872c25744ab4669c7d9dbcf15e' // 用于访问新闻接口的appKey
+const request = require('../../utils/request.js')
+const extractArticleInfo = require('./utils/getArticleTime.js')
 
 Page({
   data: {
@@ -29,175 +17,45 @@ Page({
       { name: '时尚', nameID: '201707', newsType: 'shishang' },
       { name: '娱乐', nameID: '201708', newsType: 'yule' },
       { name: '国内', nameID: '201709', newsType: 'guonei' },
-      { name: '国际', nameID: '2017010', newsType: 'guoji' },
+      { name: '国际', nameID: '2017010', newsType: 'guoji' }
     ],
-
-    topPic: topPic,
-    tapID: 201701, //判断是否选中
-    contentNewsList: contentNewsList,
-
-    indexIsHidden: indexIsHidden
+    topPic: [],
+    tapID: 201701, // 判断是否选中
+    contentNewsList: [],
+    newsType: 'top' // 默认请求的是头条数据
   },
 
-  newsType: 'top', //默认请求的是头条数据
-
-  //事件处理函数
-
-  //headerBar 点击
-  headerTitleClick: function (e) {
-    let _this = this;
-    newsType = e.currentTarget.dataset.newstype;
-    _this.setData({
-      tapID: e.target.dataset.id,
-      indexIsHidden: false
-    })
-    //获取新闻
-    wx.request({
-      url: 'https://v.juhe.cn/toutiao/index?type=' + newsType + '&key=' + appKey,
-      data: {},
-      method: 'GET',
-      success: res => {
-        let resultData = res.data.result.data;
-        let editTimeArray = new Array();
-        var editTime;
-        for (let i = 0; i < resultData.length; i++) {
-          let nowTime = new Date();
-          let editDay = resultData[i].date.split(' ')[0].split('-')[2];
-          let editHour = resultData[i].date.split(' ')[1].split(':')[0];
-          let editMinute = resultData[i].date.split(' ')[1].split(':')[1];
-          let nowDay = nowTime.getDate();
-          if (nowDay < 10) nowDay = (Array(2).join(0) + nowDay).slice(-2);
-          let nowHour = nowTime.getHours();
-          let nowMinute = nowTime.getMinutes();
-          let hourInterval = nowHour - editHour;
-          let minteinterval = nowMinute - editMinute;
-
-          if (editDay == nowDay) {
-            if (hourInterval > 1) {
-              editTime = hourInterval + '小时前';
-            } else if (hourInterval = 1 && minteinterval < 0) {
-              editTime = minteinterval + 60 + '分钟前';
-            } else {
-              editTime = minteinterval + '分钟前';
-            }
-          } else {
-            nowHour += 24;
-            hourInterval = nowHour - editHour;
-            if (hourInterval > 1) {
-              editTime = hourInterval + '小时前';
-            } else if (hourInterval = 1 && minteinterval < 0) {
-              editTime = minteinterval + 60 + '分钟前';
-            } else {
-              editTime = '1小时前';
-            }
-          }
-          resultData[i].date = editTime;
-        }
-
-        //获取头部轮播图片
-        for (let n = 0; n < 4; ++n) {
-          let ranNum = Math.floor(Math.random() * 30);
-          if (resultData[ranNum].thumbnail_pic_s03 == undefined) {
-            topPic[n].url = resultData[ranNum].thumbnail_pic_s
-          } else {
-            topPic[n].url = resultData[ranNum].thumbnail_pic_s03
-          }
-        }
-
-        _this.setData({
-          contentNewsList: resultData,
-          indexIsHidden: true,
-          topPic: topPic
-        })
-
-      },
-      fail: error => {
-
-      },
-      complete: () => {
-
-      }
+  // headerBar 点击
+  headerTitleClick: function(e) {
+    // 获取新闻
+    request({ url: `https://v.juhe.cn/toutiao/index?type=${e.currentTarget.dataset.newstype}&key=${appKey}`, newstype: e.currentTarget.dataset.newstype }).then(res => {
+      let { articleList, topPic } = extractArticleInfo(res.result.data)
+      this.setData({
+        contentNewsList: articleList,
+        topPic,
+        tapID: e.target.dataset.id
+      })
     })
   },
 
   //跳转到新闻详情页
 
   viewDetail: function(e) {
-    newsUrl = e.currentTarget.dataset.newsurl;
-    newsTitle = e.currentTarget.dataset.newstitle;
-    newsAuthor = e.currentTarget.dataset.newsauthor;
+    let newsUrl = e.currentTarget.dataset.newsurl
+    let newsTitle = e.currentTarget.dataset.newstitle
+    let newsAuthor = e.currentTarget.dataset.newsauthor
     wx.navigateTo({
-      url: '../detail/detail?newsUrl=' + newsUrl + '&newsTitle=' + newsTitle + '&newsAuthor=' + newsAuthor,
+      url: '../detail/detail?newsUrl=' + newsUrl + '&newsTitle=' + newsTitle + '&newsAuthor=' + newsAuthor
     })
   },
 
-  onLoad: function () {
-    var _this = this;
-    //请求头条数据
-    wx.request({
-      url: 'https://v.juhe.cn/toutiao/index?type=' + newsType + '&key=' + appKey,
-      // url: 'http://192.168.1.3:90/index.json',
-      data: {},
-      method: 'GET',
-      success: res => {
-        let resultData = res.data.result.data;
-        let editTimeArray = new Array();
-        var editTime;
-        for (let i = 0; i < resultData.length; i++) {
-          let nowTime = new Date();
-          let editDay = resultData[i].date.split(' ')[0].split('-')[2];
-          let editHour = resultData[i].date.split(' ')[1].split(':')[0];
-          let editMinute = resultData[i].date.split(' ')[1].split(':')[1];
-          let nowDay = nowTime.getDate();
-          if (nowDay < 10) nowDay = (Array(2).join(0) + nowDay).slice(-2);
-          let nowHour = nowTime.getHours();
-          let nowMinute = nowTime.getMinutes();
-          let hourInterval = nowHour - editHour;
-          let minteinterval = nowMinute - editMinute;
-          if (editDay == nowDay) {
-            if (hourInterval > 1) {
-              editTime = hourInterval + '小时前';
-            } else if (hourInterval = 1 && minteinterval < 0) {
-              editTime = minteinterval + 60 + '分钟前';
-            } else {
-              editTime = minteinterval + '分钟前';
-            }
-          } else {
-            nowHour += 24;
-            hourInterval = nowHour - editHour;
-            if (hourInterval > 1) {
-              editTime = hourInterval + '小时前';
-            } else if (hourInterval = 1 && minteinterval < 0) {
-              editTime = minteinterval + 60 + '分钟前';
-            } else {
-              editTime = '1小时前';
-            }
-          }
-          resultData[i].date = editTime;
-        }
-
-        //获取头部轮播图片
-        for (let n = 0; n < 4; ++n) {
-          let ranNum = Math.floor(Math.random() * 30);
-          if (resultData[ranNum].thumbnail_pic_s03 == undefined) {
-            topPic[n].url = resultData[ranNum].thumbnail_pic_s
-          } else {
-            topPic[n].url = resultData[ranNum].thumbnail_pic_s03
-          }
-        }
-        _this.setData({
-          contentNewsList: resultData,
-          indexIsHidden: true,
-          topPic: topPic
-        })
-
-      },
-      fail: error => {
-
-      },
-      complete: () => {
-
-      }
+  onLoad: function() {
+    request({ url: `https://v.juhe.cn/toutiao/index?type=${this.data.newsType}&key=${appKey}`, newstype: this.data.newsType }).then(res => {
+      let { articleList, topPic } = extractArticleInfo(res.result.data)
+      this.setData({
+        contentNewsList: articleList,
+        topPic
+      })
     })
-  },
+  }
 })
