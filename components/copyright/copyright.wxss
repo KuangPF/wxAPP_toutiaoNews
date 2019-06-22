@@ -1,4 +1,4 @@
-/* components/footer/footer.wxss */
+/* components/footer/copyright.wxss */
 .copyright {
   margin: 15rpx 0 40rpx 0;
   text-align: center;

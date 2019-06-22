@@ -38,6 +38,6 @@
     </view>
   </view>
   <view class="footer" wx:if="{{showCopyright}}">
-    <component-footer></component-footer>
+    <component-copyright></component-copyright>
   </view>
 </view>
