@@ -1,2 +1,9 @@
-<!--components/scroll-view-refresh-load/scroll-view-refresh-load.wxml-->
-<text>components/scroll-view-refresh-load/scroll-view-refresh-load.wxml</text>
+<!-- components/scroll-view-refresh-load/scroll-view-refresh-load.wxml -->
+<scroll-view class="scroll-view-content" scroll-y bindscroll="onScroll" bindscrolltoupper="pullDownRefresh">
+  <view class="pull-down-refresh">
+    <block wx:if="{{pullDownStatus === 0}}">
+      <text>{{pullDownText}}</text>
+    </block>
+  </view>
+  <slot></slot>
+</scroll-view>

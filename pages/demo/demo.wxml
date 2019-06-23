@@ -1,0 +1,8 @@
+<!-- pages/demo/demo.wxml -->
+<view class="title">component-scroll-view-refresh-load</view>
+<component-scroll-view-refresh-load bindscroll='onScroll'>
+  <block>
+    <view class="scroll-text">some text</view>
+    <view class="scroll-text">some text</view>
+  </block>
+</component-scroll-view-refresh-load>

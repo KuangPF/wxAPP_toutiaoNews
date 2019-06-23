@@ -1,0 +1,20 @@
+/* pages/demo/demo.wxss */
+page {
+  height: 100%;
+}
+:host {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.title {
+  height: 50px;
+}
+component-scroll-view-refresh-load {
+  height: calc(100% - 51px);
+  overflow: hidden;
+  display: block;
+}
+.scroll-text {
+  height: 1600rpx;
+}
