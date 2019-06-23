@@ -10,7 +10,7 @@ page {
 .title {
   height: 50px;
 }
-component-scroll-view-refresh-load {
+scroll-view-refresh-load {
   height: calc(100% - 51px);
   overflow: hidden;
   display: block;
