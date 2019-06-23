@@ -5,8 +5,8 @@
   display: block;
 }
 .scroll-view-content {
-  height: calc(100% + 40rpx);
-  transform: translateY(-40rpx);
+  height: calc(100% + 80rpx);
+   transform: translateY(-80rpx);
 }
 .scroll-view-content.refresh {
   transform: translateY(0);
@@ -15,19 +15,37 @@
   animation: finish 0.5s;
 }
 .pull-down-refresh {
-  height: 40rpx;
-  line-height: 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   text-align: center;
 }
 .pull-down-text {
   font-size: 14px;
   color: rgb(102, 102, 102);
+  vertical-align: middle;
+}
+.pull-down-icon {
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.pull-down-icon-loading {
+  animation: loading 1.5s linear infinite;
 }
 @keyframes finish {
   from {
     transform: translateY(0);
   }
   to {
-    transform: translateY(-40rpx);
+    transform: translateY(-80rpx);
+  }
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

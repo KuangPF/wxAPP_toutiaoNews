@@ -8,6 +8,7 @@
       <text class="pull-down-text">{{releaseText}}</text>
     </block>
     <block wx:if="{{pullDownStatus === 3}}">
+      <image class="pull-down-icon pull-down-icon-loading" src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAPFBMVEUAAAAwMDAwMDAwMDAwMDAzMzMyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIzMzMzMzMyMjIzMzMyMjIzMzNo78cTAAAAE3RSTlMAQBAgMPDvwHBgkODQgFCw36CfHBTL1gAAAQVJREFUOMutktuygyAMRUMSqKjVtvv///WY4FRoTt+6Z2TALHIj9Gvx+vpqE1sS4JxG+x3zG+AVWwBmIDngMFKMnnE7ASm2DZqA2oAnoB+2auuCQop8fJ4Oz2ce7vfm8fPhng3i41IBruIBvIRU2lmZ0gPA3NWYgcLXWeFOO/ETWXog19BIGS4MtmTikdfu5wpT4cEO106tflMeAMnAuw52b0IU4uqQ1hhCwmuXMpSJebiwWeNkTKFM1/nWGicnokqyA1g7h0v1MRCDpI3O2vmcJm5+2CAfnUN1+6gLuNuSbOIqRS1Y2AHbPvj/iTuBDZgCUD2wAzaVGwUpXcD13EH7zvRj/QH7Owy2Y4lKlwAAAABJRU5ErkJggg==' />
       <text class="pull-down-text">{{loadingText}}...</text>
     </block>
   </view>
