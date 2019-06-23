@@ -1,6 +1,6 @@
 <!-- pages/demo/demo.wxml -->
-<view class="title">component-scroll-view-refresh-load</view>
-<scroll-view-refresh-load bindscroll='onScroll'>
+<view class="title">header</view>
+<scroll-view-refresh-load refreshing="{{refreshing}}" bindscroll="onScroll" bindpulldownrefresh="onPulldownrefresh_SVC">
   <block>
     <view class="scroll-text">some text</view>
     <view class="scroll-text">some text</view>

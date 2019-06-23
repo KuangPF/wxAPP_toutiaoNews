@@ -1,11 +1,14 @@
 <!-- components/scroll-view-refresh-load/scroll-view-refresh-load.wxml -->
-<scroll-view class="scroll-view-content" scroll-y bindscroll="onScroll" bindscrolltoupper="pullDownRefresh">
+<scroll-view class="scroll-view-content {{pullDownStatus === 3 ? 'refresh' : ''}} {{pullDownStatus === 4 ? 'finish' : ''}}" scroll-y scroll-with-animation bindscroll="onScroll" bindtouchend="onTouchEnd" bindscrolltoupper="pullDownRefresh">
   <view class="pull-down-refresh">
     <block wx:if="{{pullDownStatus === 0 || pullDownStatus === 1}}">
-      <text>{{pullDownText}}</text>
+      <text class="pull-down-text">{{pullDownText}}</text>
     </block>
     <block wx:if="{{pullDownStatus === 2}}">
-      <text>{{releaseText}}</text>
+      <text class="pull-down-text">{{releaseText}}</text>
+    </block>
+    <block wx:if="{{pullDownStatus === 3}}">
+      <text class="pull-down-text">{{loadingText}}...</text>
     </block>
   </view>
   <slot></slot>

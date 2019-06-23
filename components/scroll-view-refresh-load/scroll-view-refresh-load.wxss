@@ -1,10 +1,33 @@
 /* components/scroll-view-refresh-load/scroll-view-refresh-load.wxss */
+:host {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
 .scroll-view-content {
   height: calc(100% + 40rpx);
   transform: translateY(-40rpx);
+}
+.scroll-view-content.refresh {
+  transform: translateY(0);
+}
+.scroll-view-content.finish {
+  animation: finish 0.5s;
 }
 .pull-down-refresh {
   height: 40rpx;
   line-height: 40rpx;
   text-align: center;
+}
+.pull-down-text {
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+}
+@keyframes finish {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-40rpx);
+  }
 }

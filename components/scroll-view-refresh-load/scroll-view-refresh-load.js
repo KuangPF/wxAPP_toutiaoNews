@@ -21,6 +21,15 @@ Component({
     releaseText: {
       type: String,
       value: '松开刷新'
+    },
+    loadingText: {
+      type: String,
+      value: '正在刷新'
+    },
+    refreshing: {
+      type: Boolean,
+      value: false,
+      observer: '_onRefreshFinished'
     }
   },
 
@@ -38,6 +47,7 @@ Component({
     onScroll: function(e) {
       this.triggerEvent('scroll', e.detail)
       const status = this.data.pullDownStatus
+      if (status === 3 || status == 4) return
       const height = this.properties.pullDownHeight
       const scrollTop = e.detail.scrollTop
       let targetStatus
@@ -52,6 +62,31 @@ Component({
         this.setData({
           pullDownStatus: targetStatus
         })
+      }
+    },
+    // 手指离开屏幕时
+    onTouchEnd: function(e) {
+      const status = this.data.pullDownStatus
+      if (status === 2) {
+        this.setData({
+          pullDownStatus: 3
+        })
+        this.properties.refreshing = true
+        setTimeout(() => {
+          this.triggerEvent('pulldownrefresh')
+        }, 500)
+      }
+    },
+    _onRefreshFinished(newVal, oldVal) {
+      if (oldVal === true && newVal === false) {
+        this.setData({
+          pullDownStatus: 4
+        })
+        setTimeout(() => {
+          this.setData({
+            pullDownStatus: 0
+          })
+        }, 500)
       }
     },
     /* 下拉刷新 */

@@ -8,7 +8,11 @@ page {
   overflow: hidden;
 }
 .title {
-  height: 50px;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #4e525e;
+  color: #fff;
+  text-align: center;
 }
 scroll-view-refresh-load {
   height: calc(100% - 51px);
