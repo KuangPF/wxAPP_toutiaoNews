@@ -6,7 +6,7 @@
 }
 .scroll-view-content {
   height: calc(100% + 80rpx);
-  /* transform: translateY(-80rpx); */
+  transform: translateY(-80rpx);
 }
 .scroll-view-content.refresh {
   transform: translateY(0);

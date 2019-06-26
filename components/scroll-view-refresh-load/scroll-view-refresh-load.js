@@ -37,7 +37,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    pullDownStatus: 3 // 下拉刷新的状态
+    pullDownStatus: 0 // 下拉刷新的状态
   },
 
   /**
