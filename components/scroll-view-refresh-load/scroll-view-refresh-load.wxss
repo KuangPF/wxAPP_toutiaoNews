@@ -15,7 +15,11 @@
   animation: finish 1.5s ease;
 }
 .finish-text {
-  animation: finishText 1s ease-in-out;
+  display: inline-block;
+  width: 100%;
+  background-color: #D8E8F5;
+  color: #4B8FD1 !important;
+  animation: finishText 1s ease-in;
 }
 .pull-down-refresh {
   height: 80rpx;
@@ -39,12 +43,15 @@
 @keyframes finishText {
   0% {
     opacity: 0;
+    width: 95%;
   }
   70% {
     opacity: 1;
+    width: 100%;
   }
   100% {
     opacity: 1;
+    width: 100%;
   }
 }
 @keyframes finish {
