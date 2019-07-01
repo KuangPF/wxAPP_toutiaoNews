@@ -12,7 +12,10 @@
   transform: translateY(0);
 }
 .scroll-view-content.finish {
-  animation: finish 0.5s;
+  animation: finish 1.5s ease;
+}
+.finish-text {
+  animation: finishText 1s ease-in-out;
 }
 .pull-down-refresh {
   height: 80rpx;
@@ -33,11 +36,25 @@
 .pull-down-icon-loading {
   animation: loading 1.2s linear infinite;
 }
+@keyframes finishText {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes finish {
-  from {
+  0% {
     transform: translateY(0);
   }
-  to {
+  75% {
+    transform: translateY(0);
+  }
+  100% {
     transform: translateY(-80rpx);
   }
 }

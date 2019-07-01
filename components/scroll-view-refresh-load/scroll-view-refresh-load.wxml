@@ -11,6 +11,9 @@
       <image class="pull-down-icon pull-down-icon-loading" src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAABwCAMAAADIWbUiAAAAUVBMVEUAAABhYWFmZmZkZGRmZmZlZWVlZWVmZmZlZWVlZWVmZmZmZmZjY2NjY2NlZWVjY2NiYmJkZGRlZWVkZGRlZWVlZWVlZWVlZWVmZmZlZWVmZmZkHECiAAAAGnRSTlMAFJRUKdQ/f2q/qukLH2E6GEx2L5/dsjTwzeu7oFIAAANPSURBVGje7ZjbjqwgEEW3yvHWBXjv6f7/Dz0ROl0PAgrkJJMc16syy6Jq10wGNzf/kMIAD7fu/9SNcTrKk63vOUZHQqQL5+79fncxOimEkInC8W1Q13UkDGk++jG6lS7rhAVptG9Dc1VXWFvyyK5G9yMDuvzimPptWK7pJHcukc766lMdz4lEOtLqXqc6Lg45NByGEx0d5iQ9DD8U0OXPCaM4DEFdwXOSxcv65InuMCd5YeiCOg5BNguHwa3jORmQj/yszoMuNCf5YWgPusxlORJc0MphcOvCxXm+QjxWFQpDCQ9DaE4GXbsfbI/H46UDq3OGJWJZkq7r2nlufBgWx7HZDksd1JHjyVwbCleeHx8mcoXhp4GXwh0CWX/QnuIsa3VcnQshxCBcTTN4yhMbCzud+/cjPVk2u09XLxaWEhmQYJkevG9NK9/oREhFapbJ4IsLF/iqEIG7aadLW3cs3ASioZllT8I51crCkhBHoGn+FrJvjfNptsmIXm/f8hKLE5Gf+eLi4svThFjU3sIpOgPctEioebwQja4FEhEa0RDh5ubm1/HHAxKpPNy6W3dVd3Nz8+sQM6IZCqRBU9cjGtVqQgLV1nWdQiTPtm1V/KXMfbezEaIg1e6oIa4BZfdhQhR1+2GkiE/svmwUX5zlefHkuLFtir3Mmn1KXGnawrJSIJpiZGE1nDWtYVmvE9PKNxpuIamNm6YIidCThcrfwrHn0qbwPeS3cC5ZVs7n/4ILvzBULBwLHNAs28bDD1taCsrGiUItlDjwvUlH09q+X6pAuKemGR0t/N4nvOU1jqbJfscXC9k2O4OraC7uwN67ZYaDpjdIX3gMyvlM7b1z56XbKvddWZuCh9H6PBOo2gJOPL+oqDS2hZ+WBn5hMrrWc1wiiqo3jPDpoBtDDeRTLHZQ4NfBDstEyGfqDSKkk41hRDbC2iaEdFDWJ5FLaXVFWEcchnQ4BBXCOtTWNyMLWjgEQR1N2dPCIahxpsOcHwYUPYcgqONpySmv4RCEdRyGKjsELQI6psoNw2dZFld0vDqRyMghONdxGHRWCEq6qqOs1fnkEFzRcRgEkpD7YDa4pOMwqAGpPMtexuhk0wrk8ESMDgKZXNUxt+7W3ZzwFzL8QWsVRDxEAAAAAElFTkSuQmCC' />
       <text class="pull-down-text">{{loadingText}}...</text>
     </block>
+    <block wx:if="{{pullDownStatus === 4}}">
+      <text class="pull-down-text {{pullDownStatus === 4 ? 'finish-text' : ''}}">{{finishText}}</text>
+    </block>
   </view>
   <slot></slot>
 </scroll-view>

@@ -26,6 +26,10 @@ Component({
       type: String,
       value: '正在刷新'
     },
+    finishText: {
+      type: String,
+      value: '刷新成功'
+    },
     refreshing: {
       type: Boolean,
       value: false,
@@ -86,7 +90,7 @@ Component({
           this.setData({
             pullDownStatus: 0
           })
-        }, 500)
+        }, 1500)
       }
     },
     /* 下拉刷新 */
