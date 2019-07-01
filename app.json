@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/demo/demo",
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
-    "pages/webview/webview"
+    "pages/webview/webview",
+    "pages/demo/demo"
   ],
   "window": {
     "backgroundTextStyle": "light",

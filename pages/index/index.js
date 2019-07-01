@@ -23,7 +23,8 @@ Page({
     topPic: [],
     tapID: 201701, // 判断是否选中
     contentNewsList: [],
-    showCopyright: false
+    showCopyright: false,
+    refreshing: false
   },
 
   onLoad: function() {
@@ -56,6 +57,13 @@ Page({
     })
   },
 
+  onPulldownrefresh_SV() {
+    setTimeout(() => {
+      this.setData({
+        refreshing: false
+      })
+    }, 2000)
+  },
   renderPage: function(newsType, calllBack) {
     wx.showLoading({
       title: '加载中'

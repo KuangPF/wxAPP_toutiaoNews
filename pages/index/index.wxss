@@ -1,4 +1,10 @@
 /**index.wxss**/
+page {
+  height: 100%;
+}
+.index {
+  height: 100%;
+}
 ::-webkit-scrollbar {
   height: 0;
   width: 0;
@@ -31,14 +37,18 @@
 }
 .header-title-active {
   /* border-bottom: 4rpx solid #C34943; */
-  color: #C34943;
+  color: #c34943;
   z-index: 99;
   font-size: 34rpx;
 }
-
+.nav-blank {
+  height: 81rpx;
+}
 /*content  */
-.content {
-  margin-top: 81rpx;
+.scroll-view-refresh-load-component {
+  height: calc(100vh - 81rpx);
+  padding-bottom: 20px;
+  box-sizing: border-box;
 }
 .content-top-pic {
   position: relative;
