@@ -42,13 +42,11 @@ page {
   font-size: 34rpx;
 }
 .nav-blank {
-  height: 81rpx;
+  height: 80rpx;
 }
 /*content  */
 .scroll-view-refresh-load-component {
-  height: calc(100vh - 81rpx);
-  padding-bottom: 20px;
-  box-sizing: border-box;
+  height: calc(100vh - 80rpx);
 }
 .content-top-pic {
   position: relative;

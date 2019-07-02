@@ -28,7 +28,7 @@ Page({
   },
 
   onLoad: function() {
-    this.renderPage('top', () => {
+    this.renderPage('top', false, () => {
       this.setData({
         showCopyright: true
       })
@@ -38,7 +38,7 @@ Page({
   // headerBar 点击
   headerTitleClick: function(e) {
     this.setData({ tapID: e.target.dataset.id })
-    this.renderPage(e.currentTarget.dataset.newstype)
+    this.renderPage(e.currentTarget.dataset.newstype, false)
   },
 
   //跳转到新闻详情页
@@ -58,30 +58,47 @@ Page({
   },
 
   onPulldownrefresh_SV() {
-    setTimeout(() => {
+    this.renderPage('top', true, () => {
       this.setData({
         refreshing: false
       })
-    }, 2000)
-  },
-  renderPage: function(newsType, calllBack) {
-    wx.showLoading({
-      title: '加载中'
     })
-    request({ url: `https://v.juhe.cn/toutiao/index?type=${newsType}&key=${appKey}`, newstype: newsType })
-      .then(res => {
-        wx.hideLoading()
-        let { articleList, topPic } = extractArticleInfo(res.result.data)
+  },
+  // isRefresh 是否为下拉刷新
+  renderPage: function(newsType, isRefresh, calllBack) {
+    if (!isRefresh) {
+      wx.showLoading({
+        title: '加载中'
+      })
+      request({ url: `https://v.juhe.cn/toutiao/index?type=${newsType}&key=${appKey}`, newstype: newsType })
+        .then(res => {
+          wx.hideLoading()
+          let { articleList, topPic } = extractArticleInfo(res.result.data)
+          this.setData({
+            contentNewsList: articleList,
+            topPic
+          })
+          if (calllBack) {
+            calllBack()
+          }
+        })
+        .catch(error => {
+          wx.hideLoading()
+        })
+    } else {
+      // 数组随机排序，模拟刷新
+      let contentNewsListTemp = JSON.parse(JSON.stringify(this.data.contentNewsList))
+      contentNewsListTemp.sort(() => {
+        return Math.random() > 0.5 ? -1 : 1
+      })
+      setTimeout(() => {
         this.setData({
-          contentNewsList: articleList,
-          topPic
+          contentNewsList: contentNewsListTemp
         })
         if (calllBack) {
           calllBack()
         }
-      })
-      .catch(error => {
-        wx.hideLoading()
-      })
+      }, 2000)
+    }
   }
 })
