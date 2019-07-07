@@ -4,6 +4,7 @@ const app = getApp()
 const appKey = 'fc35d7872c25744ab4669c7d9dbcf15e' // 用于访问新闻接口的appKey
 const request = require('../../utils/request.js')
 const extractArticleInfo = require('./utils/getArticleTime.js')
+const shuffle = require('./utils/shuffle.js')
 
 Page({
   data: {
@@ -87,10 +88,10 @@ Page({
         })
     } else {
       // 数组随机排序，模拟刷新
-      let contentNewsListTemp = JSON.parse(JSON.stringify(this.data.contentNewsList))
-      contentNewsListTemp.sort(() => {
+      let contentNewsListTemp =  shuffle(JSON.parse(JSON.stringify(this.data.contentNewsList)))
+      /* contentNewsListTemp.sort(() => {
         return Math.random() > 0.5 ? -1 : 1
-      })
+      }) */
       setTimeout(() => {
         this.setData({
           contentNewsList: contentNewsListTemp
