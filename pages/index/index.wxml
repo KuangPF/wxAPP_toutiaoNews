@@ -40,7 +40,9 @@
       </view>
     </view>
     <view class="footer" wx:if="{{showCopyright}}">
-      <component-copyright></component-copyright>
+      <view class="footer-component">
+        <component-copyright></component-copyright>
+      </view>
     </view>
   </scroll-view-refresh-load>
 </view>

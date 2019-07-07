@@ -139,3 +139,9 @@ page {
   bottom: 0;
   left: 0;
 }
+.footer {
+  overflow: hidden;
+}
+.footer-component {
+  margin: 15rpx 0 30rpx;
+}
