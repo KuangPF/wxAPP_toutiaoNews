@@ -1,5 +1,7 @@
 ## 微信小程序--头条新闻
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 #### 项目说明
 
 * 微信小程序: 实现一个头条新闻
