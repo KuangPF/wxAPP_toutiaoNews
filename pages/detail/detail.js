@@ -1,4 +1,8 @@
 // pages/detail/detail.js
+const request = require('../../utils/request.js')
+const util = require('../../utils/util.js')
+var WxParse = require('../../components/wxParse/wxParse.js')
+
 Page({
   /**
    * 页面的初始数据
@@ -13,15 +17,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let newsUrl = options.newsUrl;
-    let newsTitle = options.newsTitle;
-    let newsAuthor = options.newsAuthor;
-    console.log(newsUrl, newsTitle);
-    this.setData({
-      newsTitle,
-      newsUrl,
-      newsAuthor
+  onLoad: function(options) {
+    let { newsUrl } = options
+    request({
+      url: newsUrl
+    }).then(res => {
+      WxParse.wxParse('newsDetailData', 'html', util.getBodyHtml(res), this)
     })
-  },
+  }
 })

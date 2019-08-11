@@ -1,5 +1,3 @@
-//index.js
-//获取应用实例
 const app = getApp()
 const appKey = 'fc35d7872c25744ab4669c7d9dbcf15e' // 用于访问新闻接口的appKey
 const request = require('../../utils/request.js')
@@ -48,7 +46,7 @@ Page({
     let newsTitle = e.currentTarget.dataset.newstitle || ''
     let newsAuthor = e.currentTarget.dataset.newsauthor || ''
     wx.navigateTo({
-      url: '../webview/webview?newsUrl=' + newsUrl + '&newsTitle=' + newsTitle + '&newsAuthor=' + newsAuthor
+      url: '../detail/detail?newsUrl=' + newsUrl
     })
   },
 
@@ -88,7 +86,7 @@ Page({
         })
     } else {
       // 数组随机排序，模拟刷新
-      let contentNewsListTemp =  shuffle(JSON.parse(JSON.stringify(this.data.contentNewsList)))
+      let contentNewsListTemp = shuffle(JSON.parse(JSON.stringify(this.data.contentNewsList)))
       /* contentNewsListTemp.sort(() => {
         return Math.random() > 0.5 ? -1 : 1
       }) */

@@ -1,8 +1,5 @@
 <!-- pages/demo/demo.wxml -->
-<view class="title">header</view>
-<scroll-view-refresh-load refreshing="{{refreshing}}" bindscroll="onScroll" bindpulldownrefresh="onPulldownrefresh_SVC">
-  <block>
-    <view class="scroll-text">some text</view>
-    <view class="scroll-text">some text</view>
-  </block>
-</scroll-view-refresh-load>
+<import src="../../components/wxParse/wxParse.wxml" />
+<view>
+  <template is="wxParse" data="{{wxParseData:aHrefHrefData.nodes}}" />
+</view>

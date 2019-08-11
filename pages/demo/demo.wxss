@@ -1,24 +1,43 @@
 /* pages/demo/demo.wxss */
 page {
-  height: 100%;
+  padding: 10px 10px 20px 10px;
+  box-sizing: border-box;
 }
-:host {
-  display: block;
+.article-title {
+  margin-bottom: 0.2rem;
+}
+.article-title .title {
+  font-size: 22px !important;
+  line-height: 28px;
+  font-weight: 700;
+  color: #3a3a3a;
+}
+.J-article-content {
+  text-align: justify;
+}
+.article-src-time {
+  font-size: 12px;
+  color: #999;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.img-wrap {
   position: relative;
-  overflow: hidden;
-}
-.title {
-  height: 100rpx;
-  line-height: 100rpx;
-  background-color: #4e525e;
-  color: #fff;
-  text-align: center;
-}
-scroll-view-refresh-load {
-  height: calc(100% - 51px);
-  overflow: hidden;
   display: block;
+  width: 100%;
+  height: 0;
+  background-color: rgba(150, 150, 150, 0.1);
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  background-size: 40%;
 }
-.scroll-text {
-  height: 1600rpx;
+.article-content .txt {
+  word-wrap: break-word;
+  font-size: 18px;
+  color: #333;
+}
+.article-content .section {
+  line-height: 28px;
+  margin-top: 20px;
 }

@@ -11,7 +11,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
-	"appid": "wx9279d22d7f0894ed",
+	"appid": "wxe03b12a40c79858f",
 	"projectname": "toutiaoNews",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -24,9 +24,23 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"plugin": {
 			"current": -1,
 			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "demo",
+					"pathName": "pages/demo/demo",
+					"scene": null
+				}
+			]
 		}
 	}
 }

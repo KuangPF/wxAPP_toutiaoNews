@@ -1,11 +1,5 @@
-<!--pages/detail/detail.wxml-->
-<view class='detail'>
-  <view class='header'>
-    <view class='article-title'>{{newsTitle}}</view>
-    <view class='news-source'>{{newsAuthor}}</view>
-  </view>
-  <view class='content'>
-    <view class='contentTip'>{{contentTip}}</view>
-    <view class='article-content'>{{newsUrl}}</view>
-  </view>
+<!-- pages/detail/detail.wxml -->
+<import src="../../components/wxParse/wxParse.wxml" />
+<view>
+  <template is="wxParse" data="{{wxParseData:newsDetailData.nodes}}" />
 </view>
