@@ -14,6 +14,18 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+/**
+ * 匹配 body 中的元素，删除 script 标签
+ */
+
+var REG_BODY = /<body[^>]*>([\s\S]*)<\/body>/
+const getBodyHtml = html => {
+  let result = REG_BODY.exec(html)
+  if (result && result.length === 2) return result[1].replace(/<script.*?>.*?<\/script>/gi, '')
+  return content.replace(/<script.*?>.*?<\/script>/gi, '')
+}
+
 module.exports = {
-  formatTime: formatTime
+  getBodyHtml,
+  formatTime
 }
