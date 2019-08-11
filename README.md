@@ -22,6 +22,5 @@
 - 该项目暂没有线上版本，目的在于小程序开发的学习与交流
 
 
-
 ### License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKuangPF%2FwxAPP_toutiaoNews.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FKuangPF%2FwxAPP_toutiaoNews?ref=badge_large)
